@@ -20,7 +20,8 @@
                     @fragments.meta.metaInline(item, amp)
                 }
 
-                <h1 class="content__headline js-score" itemprop="headline">
+                <h1 class="content__headline js-score" itemprop="headline" lang="@{item.content.fields.rightToLeftLang}" dir="auto">
+
                     @if(item.tags.isMedia) {
                         @defining(
                             item match {

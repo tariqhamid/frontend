@@ -131,25 +131,25 @@ object Fields {
       isLive = apiContent.fields.flatMap(_.liveBloggingNow).getOrElse(false),
       sensitive = apiContent.fields.flatMap(_.sensitive),
       legallySensitive = apiContent.fields.flatMap(_.legallySensitive),
-      lang = apiContent.fields.flatMap(_.lang)
+      rightToLeftLang = apiContent.fields.flatMap(_.lang).filter(_.equals("ar"))
     )
   }
 }
 
 final case class Fields(
-  trailText: Option[String],
-  linkText: String,
-  shortUrl: String,
-  standfirst: Option[String],
-  main: String,
-  body: String,
-  blocks: Option[Blocks],
-  lastModified: DateTime,
-  displayHint: String,
-  isLive: Boolean,
-  sensitive: Option[Boolean],
-  legallySensitive: Option[Boolean],
-  lang: Option[String]
+                         trailText: Option[String],
+                         linkText: String,
+                         shortUrl: String,
+                         standfirst: Option[String],
+                         main: String,
+                         body: String,
+                         blocks: Option[Blocks],
+                         lastModified: DateTime,
+                         displayHint: String,
+                         isLive: Boolean,
+                         sensitive: Option[Boolean],
+                         legallySensitive: Option[Boolean],
+                         rightToLeftLang: Option[String]
 ){
   lazy val shortUrlId = shortUrl.replaceFirst("^[a-zA-Z]+://gu.com", "") //removing scheme://gu.com
 
