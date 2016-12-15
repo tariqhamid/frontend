@@ -12,7 +12,7 @@ define([
             return new Promise(function(resolve, reject) {
                 if (location) return resolve(location);
                 else {
-                    fetch('https://api.nextgen.guardianapps.co.uk/geolocation', {
+                    fetch('/geolocation', {
                         method: 'GET',
                         contentType: 'application/json',
                         crossOrigin: true
