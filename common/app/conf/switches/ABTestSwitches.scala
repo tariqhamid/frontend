@@ -52,11 +52,11 @@ trait ABTestSwitches {
 
   Switch(
     ABTests,
-    "ab-contributions-epic-brexit",
-    "Test whether we get a positive effect on membership/contribution by targeting the latest brexit articles",
-    owners = Seq(Owner.withGithub("alexduf")),
+    "ab-contributions-epic-trump-inauguration",
+    "Test whether we get a positive effect on membership/contribution by targeting the latest Trump articles",
+    owners = Seq(Owner.withGithub("desbo")),
     safeState = Off,
-    sellByDate = new LocalDate(2017, 3, 1),
+    sellByDate = new LocalDate(2017, 3, 16),
     exposeClientSide = true
   )
 

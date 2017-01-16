@@ -2,21 +2,19 @@ define([
     'common/modules/commercial/contributions-utilities',
     'common/utils/template',
     'text!common/views/contributions-epic-equal-buttons.html'
-], function (
-    contributionsUtilities,
-    template,
-    contributionsEpicEqualButtons
-) {
+], function (contributionsUtilities,
+             template,
+             contributionsEpicEqualButtons) {
 
     return contributionsUtilities.makeABTest({
-        id: 'ContributionsEpicBrexit',
-        campaignId: 'epic_brexit_2017_01',
+        id: 'ContributionsEpicTrumpInauguration',
+        campaignId: 'epic_trump_2017',
 
-        start: '2017-01-06',
-        expiry: '2017-03-01',
+        start: '2017-01-16',
+        expiry: '2017-03-16',
 
-        author: 'Alex Dufournet',
-        description: 'Test whether we get a positive effect on membership/contribution by targeting the latest brexit articles',
+        author: 'Sam Desborough',
+        description: 'Test whether we get a positive effect on membership/contribution by targeting the latest Trump articles',
         successMeasure: 'Conversion rate',
         idealOutcome: 'The conversion rate is equal or above what we have observed on other campaigns',
 
