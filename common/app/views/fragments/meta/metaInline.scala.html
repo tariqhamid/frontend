@@ -1,4 +1,4 @@
-@(item: model.ContentType)(implicit request: RequestHeader)
+@(item: model.ContentType, isFeature: Boolean = false)(implicit request: RequestHeader)
 
 @import common.{LinkTo, Localisation}
 @import conf.switches.Switches.ArticleBadgesSwitch
@@ -7,8 +7,9 @@
 
 <div class="@RenderClasses(Map(
         "content__labels--gallery" -> item.content.isImmersiveGallery,
-        "content__labels--not-immersive" -> !item.content.isImmersive
-    ), "content__labels")
+        "content__labels--not-immersive" -> !item.content.isImmersive,
+        "content__labels--feature" -> isFeature
+    ), "content__labels", "hide-on-mobile")
 ">
     @if(ArticleBadgesSwitch.isSwitchedOn) {
         @badgeFor(item).map { badge =>

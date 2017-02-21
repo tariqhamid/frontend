@@ -714,118 +714,6 @@ $navigation-horizontal-padding: $gs-gutter * 2 + $gs-gutter / 2;
 }
 
 /****************
- * Changes to an Article Body
- ****************/
-
-$caption-button-size: 32px;
-.has-new-header {
-
-    // When the image is at the top of the article, the headline and byline are moved into a div with margins. This counteracts that
-    // TODO: If this change is kept after the test the template will have to be rewriten and these overrides won't be needed
-    .content__head:not(.tonal__head--tone-dead, .tonal__head--tone-live, .tonal__head--tone-media) {
-        @include mq($until: mobileLandscape) {
-            margin-right: -$gs-gutter / 2;
-            margin-left: -$gs-gutter / 2;
-        }
-
-        @include mq($from: mobileLandscape, $until: phablet) {
-            margin-right: -$gs-gutter;
-            margin-left: -$gs-gutter;
-        }
-    }
-
-    @include mq($from: phablet, $until: tablet) {
-        .media-primary,
-        .content__head {
-            margin-left: -$gs-gutter;
-            margin-right: -$gs-gutter;
-        }
-    }
-
-    @include mq($until: tablet) {
-        .content__headline {
-            padding-top: $gs-baseline / 3;
-        }
-
-        .inline-expand-image,
-        .content__labels {
-            display: none;
-        }
-
-        .reveal-caption {
-            position: absolute;
-            right: $gs-gutter / 4;
-            width: $caption-button-size;
-            height: $caption-button-size;
-            z-index: 1;
-            background-color: rgba($neutral-1, .4);
-            border-radius: 50%;
-        }
-        .reveal-caption--img {
-            bottom: $gs-baseline/2;
-        }
-
-        .caption--main.caption--video {
-            padding-bottom: 0;
-        }
-
-        .caption--main.caption--img {
-            position: absolute;
-            background: rgba($multimedia-support-5, .8);
-            color: #ffffff;
-            display: none;
-            padding: $gs-baseline / 2 $gs-gutter * 2 $gs-baseline $gs-gutter / 2;
-            max-width: 100%;
-
-            @include mq($from: mobileLandscape) {
-                padding-left: $gs-gutter;
-            }
-
-            a {
-                color: #ffffff;
-            }
-
-            &.caption--img {
-                bottom: 0;
-                padding-bottom: $gs-baseline;
-            }
-
-            &:before {
-                content: none;
-            }
-        }
-
-        input[id='show-caption']:checked ~ .caption--main {
-            display: block;
-        }
-
-        input[id='show-caption']:checked ~ .reveal-caption {
-            background-color: $multimedia-support-5;
-        }
-
-        // Padding above headline in galleries, because kicker is hidden
-        .tonal--tone-media .content__headline--gallery {
-            padding-top: $gs-baseline / 2;
-        }
-
-        .section-indicator {
-            color: #ffffff;
-
-            &:before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                bottom: 0;
-                margin-left: -$gs-baseline / 2;
-                border-bottom: $gs-baseline / 2 solid #747a81;
-                border-left: $gs-baseline / 2 solid transparent;
-                border-right: $gs-baseline / 2 solid transparent;
-            }
-        }
-    }
-}
-
-/****************
  * FOOTER
  ****************/
 
@@ -962,6 +850,97 @@ $caption-button-size: 32px;
     float: right;
     margin-top: -$gs-baseline;
     margin-left: $gs-gutter / 2;
+}
+
+
+/****************
+ * Changes to an Article Body
+ ****************/
+
+$caption-button-size: 32px;
+.has-new-header {
+
+    @include mq($until: tablet) {
+        .content__headline {
+            padding-top: $gs-baseline / 3;
+        }
+
+        .inline-expand-image,
+        .content__labels {
+            display: none;
+        }
+
+        .reveal-caption {
+            position: absolute;
+            right: $gs-gutter / 4;
+            width: $caption-button-size;
+            height: $caption-button-size;
+            z-index: 1;
+            background-color: rgba($neutral-1, .4);
+            border-radius: 50%;
+        }
+        .reveal-caption--img {
+            bottom: $gs-baseline/2;
+        }
+
+        .caption--main.caption--video {
+            padding-bottom: 0;
+        }
+
+        .caption--main.caption--img {
+            position: absolute;
+            background: rgba($multimedia-support-5, .8);
+            color: #ffffff;
+            display: none;
+            padding: $gs-baseline / 2 $gs-gutter * 2 $gs-baseline $gs-gutter / 2;
+            max-width: 100%;
+
+            @include mq($from: mobileLandscape) {
+                padding-left: $gs-gutter;
+            }
+
+            a {
+                color: #ffffff;
+            }
+
+            &.caption--img {
+                bottom: 0;
+                padding-bottom: $gs-baseline;
+            }
+
+            &:before {
+                content: none;
+            }
+        }
+
+        input[id='show-caption']:checked ~ .caption--main {
+            display: block;
+        }
+
+        input[id='show-caption']:checked ~ .reveal-caption {
+            background-color: $multimedia-support-5;
+        }
+
+        // Padding above headline in galleries, because kicker is hidden
+        .tonal--tone-media .content__headline--gallery {
+            padding-top: $gs-baseline / 2;
+        }
+
+        .section-indicator {
+            color: #ffffff;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                margin-left: -$gs-baseline / 2;
+                border-bottom: $gs-baseline / 2 solid #747a81;
+                border-left: $gs-baseline / 2 solid transparent;
+                border-right: $gs-baseline / 2 solid transparent;
+            }
+        }
+    }
 }
 
 

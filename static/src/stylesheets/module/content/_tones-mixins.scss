@@ -111,9 +111,6 @@
         }
 
         .tonal__main {
-            @include mq(phablet) {
-                padding-top: $gs-baseline * 2;
-            }
 
             .tone-colour,
             %tone-colour,
