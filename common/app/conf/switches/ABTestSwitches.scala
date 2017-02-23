@@ -139,4 +139,15 @@ trait ABTestSwitches {
     sellByDate = new LocalDate(2017, 4, 10),
     exposeClientSide = true
   )
+
+  Switch(
+    ABTests,
+    "ab-inline-ads-wide",
+    "Display more inline ads on the wide breakpoint",
+    owners = Seq(Owner.withGithub("lps88")),
+    safeState = Off,
+    sellByDate = new LocalDate(2017, 5, 10),
+    exposeClientSide = true
+  )
+
 }

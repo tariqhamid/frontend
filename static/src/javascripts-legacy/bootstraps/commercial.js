@@ -4,9 +4,11 @@ define([
     'common/utils/mediator',
     'common/utils/robust',
     'common/utils/user-timing',
+    'common/modules/experiments/ab',
     'commercial/modules/high-merch',
     'commercial/modules/article-aside-adverts',
     'commercial/modules/article-body-adverts',
+    'commercial/modules/article-body-adverts-wide',
     'commercial/modules/close-disabled-slots',
     'commercial/modules/dfp/prepare-googletag',
     'commercial/modules/dfp/prepare-sonobi-tag',
@@ -31,9 +33,11 @@ define([
     mediator,
     robust,
     userTiming,
+    ab,
     highMerch,
     articleAsideAdverts,
     articleBodyAdverts,
+    articleBodyAdvertsWide,
     closeDisabledSlots,
     prepareGoogletag,
     prepareSonobiTag,
@@ -60,7 +64,7 @@ define([
         ['cm-prepare-switch-tag', prepareSwitchTag.init, true],
         ['cm-prepare-googletag', prepareGoogletag.init, true],
         ['cm-articleAsideAdverts', articleAsideAdverts.init, true],
-        ['cm-articleBodyAdverts', articleBodyAdverts.init, true],
+        ['cm-articleBodyAdverts', areInlineAdsOffset() ? articleBodyAdvertsWide.init : articleBodyAdverts.init, true],
         ['cm-liveblogAdverts', liveblogAdverts.init, true],
         ['cm-closeDisabledSlots', closeDisabledSlots.init]
     ];
@@ -113,6 +117,11 @@ define([
             performanceLogging.addEndTimeBaseline(baseline);
             return moduleLoadResult;
         });
+    }
+
+    function areInlineAdsOffset() {
+        var testName = 'InlineAdsWide';
+        return !config.page.isImmersive && ab.testCanBeRun(testName) && ['geo', 'nogeo'].indexOf(ab.getTestVariantId(testName)) > -1;
     }
 
     return {

@@ -64,7 +64,9 @@ define([
     ready = function () {
         trail();
         articleLiveblogCommon();
-        modules.initRightHandComponent();
+        if (!shouldRemoveGeoMostPop()) {
+            modules.initRightHandComponent();
+        }
         modules.initCmpParam();
         modules.initQuizListeners();
         richLinks.upgradeRichLinks();
@@ -74,6 +76,11 @@ define([
         mediator.emit('page:article:ready');
         quiz.handleCompletion();
     };
+
+    function shouldRemoveGeoMostPop() {
+        var testName = 'InlineAdsWide';
+        return !config.page.isImmersive && ab.testCanBeRun(testName) && ['nogeo', 'none'].indexOf(ab.getTestVariantId(testName)) > -1;
+    }
 
     return {
         init: ready,

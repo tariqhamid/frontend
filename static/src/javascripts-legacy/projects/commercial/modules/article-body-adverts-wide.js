@@ -58,8 +58,11 @@ define([
         }
     };
 
-    function init() {
+    function init(start, stop) {
+        start();
+
         if (!commercialFeatures.articleBodyAdverts) {
+            stop();
             return Promise.resolve(false);
         }
 
@@ -67,12 +70,16 @@ define([
 
         if (config.page.hasInlineMerchandise) {
             var im = addInlineMerchAd();
-            im.then(waitForMerch).then(addInlineAds);
+            // Whether an inline merch has been inserted or not,
+            // we still want to try to insert inline MPUs. But
+            // we must wait for DFP to return, since if the merch
+            // component is empty, it might completely change the
+            // positions where we insert those MPUs.
+            im.then(waitForMerch).then(addInlineAds).then(stop);
             return im;
         }
 
-        addInlineAds();
-
+        addInlineAds().then(stop);
         return Promise.resolve(true);
     }
 
