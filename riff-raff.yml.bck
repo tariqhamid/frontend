@@ -14,7 +14,7 @@ templates:
 
 deployments:
   admin:
-    template: frontend
+    template: 123
   applications:
     template: frontend
   archive:
